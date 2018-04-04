@@ -18,7 +18,7 @@ namespace MyApplication2
             // There are several options to initialize the engine, but by default the following suffice:
             REngine engine = REngine.GetInstance();
 
-            var group2 = engine.Evaluate("source('C:/Desarrollo/AlamoConsulting/PFRunner/R_Example/test.r')");
+            var group = engine.Evaluate("source('C:/Desarrollo/AlamoConsulting/PFRunner/R_Example/test.r')");
             var a = engine.GetSymbol("a").AsNumeric();
             var b = engine.GetSymbol("b").AsNumeric();
             messagesBox.Text = string.Format("Secuencia de Entrada: [{0}]", string.Join(", ", a));
