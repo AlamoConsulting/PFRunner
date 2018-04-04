@@ -19,8 +19,10 @@ namespace MyApplication2
             REngine engine = REngine.GetInstance();
 
             var group2 = engine.Evaluate("source('C:/Users/Alamo/Desktop/Proyectos/PFRunner/Formacion/R_Example/test.r')");
+            var a = engine.GetSymbol("a").AsNumeric();
             var b = engine.GetSymbol("b").AsNumeric();
-            messagesBox.Text = string.Format("Group2: [{0}]", string.Join(", ", group2));
+            messagesBox.Text = string.Format("Secuencia de Entrada: [{0}]", string.Join(", ", a));
+            messagesBox.Text += Environment.NewLine + string.Format("Raíz cuadrada: [{0}]", string.Join(", ", b));
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
