@@ -1,0 +1,17 @@
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\MyApplication2.exe.config
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\MyApplication2.exe
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\MyApplication2.pdb
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\DynamicInterop.dll
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\Microsoft.Web.XmlTransform.dll
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\NuGet.Core.dll
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\RDotNet.dll
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\RDotNet.NativeLibrary.dll
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\DynamicInterop.xml
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\RDotNet.xml
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\bin\Debug\RDotNet.NativeLibrary.xml
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\obj\Debug\MyApplication2.csprojResolveAssemblyReference.cache
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\obj\Debug\MyApplication2.Form1.resources
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\obj\Debug\MyApplication2.Properties.Resources.resources
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\obj\Debug\MyApplication2.csproj.GenerateResource.Cache
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\obj\Debug\MyApplication2.exe
+C:\Users\Alamo\Desktop\Proyectos\PFRunner\Formacion\C#_Example\MyApplication2\obj\Debug\MyApplication2.pdb
