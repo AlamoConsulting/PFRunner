@@ -1,0 +1,6 @@
+C:\Desarrollo\AlamoConsulting\PFRunner\C#_Example\Encrypting\bin\Debug\Encrypting.dll
+C:\Desarrollo\AlamoConsulting\PFRunner\C#_Example\Encrypting\bin\Debug\Encrypting.pdb
+C:\Desarrollo\AlamoConsulting\PFRunner\C#_Example\Encrypting\obj\Debug\Encrypting.csprojResolveAssemblyReference.cache
+C:\Desarrollo\AlamoConsulting\PFRunner\C#_Example\Encrypting\obj\Debug\Encrypting.csproj.CoreCompileInputs.cache
+C:\Desarrollo\AlamoConsulting\PFRunner\C#_Example\Encrypting\obj\Debug\Encrypting.dll
+C:\Desarrollo\AlamoConsulting\PFRunner\C#_Example\Encrypting\obj\Debug\Encrypting.pdb
