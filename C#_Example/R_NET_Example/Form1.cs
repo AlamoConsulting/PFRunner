@@ -24,7 +24,7 @@ namespace MyApplication2
 
             var group1 = engine.Evaluate(texto);
 
-            var group = engine.Evaluate("source('C:/Desarrollo/AlamoConsulting/PFRunner/R_Example/test.r')");
+            var group = engine.Evaluate("source('C:/Desarrollo/AlamoConsulting/PFRunner/R_Example_Test/test.r')");
             var a = engine.GetSymbol("a").AsNumeric();
             var b = engine.GetSymbol("b").AsNumeric();
             messagesBox.Text = string.Format("Secuencia de Entrada: [{0}]", string.Join(", ", a));
@@ -37,21 +37,6 @@ namespace MyApplication2
             // After disposing of the engine, you cannot reinitialize nor reuse it
             REngine engine = REngine.GetInstance();
             engine.Dispose();
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void messagesBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void crearClavesToolStripMenuItem_Click(object sender, EventArgs e)
