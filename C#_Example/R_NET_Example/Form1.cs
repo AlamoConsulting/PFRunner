@@ -108,6 +108,7 @@ namespace MyApplication2
                     textBoxEnd.Text = System.Text.Encoding.UTF8.GetString(encryptedData);
                 }
             }
+
         }
 
         private void EncryptAES_Click(object sender, EventArgs e)
@@ -117,22 +118,140 @@ namespace MyApplication2
             {
                 myRijndael.GenerateKey();
                 myRijndael.GenerateIV();
-                keyAES.Text = System.Text.Encoding.Unicode.GetString(myRijndael.Key);
-                ivAES.Text = System.Text.Encoding.Unicode.GetString(myRijndael.IV);
-              
+                keyAES.Text = System.Text.Encoding.Default.GetString(myRijndael.Key);
+                ivAES.Text = System.Text.Encoding.Default.GetString(myRijndael.IV);
+
                 // Encrypt the string to an array of bytes.
-                byte[] encrypted = Encrypting.AES.EncryptStringToBytes(textBoxStart.Text, myRijndael.Key, myRijndael.IV);
-                textBoxEnd.Text = System.Text.Encoding.Unicode.GetString(encrypted);
+                byte[] encrypted = EncryptStringToBytes(textBoxStart.Text, myRijndael.Key, myRijndael.IV);
+                textBoxEnd.Text = System.Text.Encoding.Default.GetString(encrypted);
             }
         }
 
         private void DecryptAES_Click(object sender, EventArgs e)
         {
-            var texto = System.Text.Encoding.Unicode.GetBytes(textBoxStart.Text);
-            var key = System.Text.Encoding.Unicode.GetBytes(keyAES.Text);
-            var iv = System.Text.Encoding.Unicode.GetBytes(ivAES.Text);
-            string roundtrip = Encrypting.AES.DecryptStringFromBytes(texto, key, iv);
+            var texto = System.Text.Encoding.Default.GetBytes(textBoxStart.Text);
+            var key = System.Text.Encoding.Default.GetBytes(keyAES.Text);
+            var iv = System.Text.Encoding.Default.GetBytes(ivAES.Text);
+            string roundtrip = DecryptStringFromBytes2(texto, key, iv);
             textBoxEnd.Text = roundtrip;
+
+            try
+            {
+
+                string original = "Here is some data to encrypt!";
+
+                // Create a new instance of the RijndaelManaged
+                // class.  This generates a new key and initialization 
+                // vector (IV).
+                using (RijndaelManaged myRijndael = new RijndaelManaged())
+                {
+
+                    myRijndael.GenerateKey();
+                    myRijndael.GenerateIV();
+                    // Encrypt the string to an array of bytes.
+                    byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
+
+                    // Decrypt the bytes to a string.
+                    string roundtrip2 = DecryptStringFromBytes2(encrypted, myRijndael.Key, myRijndael.IV);
+
+                    //Display the original data and the decrypted data.
+                    Console.WriteLine("Original:   {0}", original);
+                    Console.WriteLine("Round Trip: {0}", roundtrip2);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: {0}", ex.Message);
+            }
+        }
+
+
+        static string DecryptStringFromBytes2(byte[] cipherText, byte[] Key, byte[] IV)
+        {
+            // Check arguments.
+            if (cipherText == null || cipherText.Length <= 0)
+                throw new ArgumentNullException("cipherText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+
+            // Declare the string used to hold
+            // the decrypted text.
+            string plaintext = null;
+
+            // Create an RijndaelManaged object
+            // with the specified key and IV.
+            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            {
+                rijAlg.Key = Key;
+                rijAlg.IV = IV;
+
+                // Create a decrytor to perform the stream transform.
+                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
+
+                // Create the streams used for decryption.
+                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+
+                            // Read the decrypted bytes from the decrypting stream
+                            // and place them in a string.
+                            plaintext = srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+
+            }
+
+            return plaintext;
+
+        }
+
+        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        {
+            // Check arguments.
+            if (plainText == null || plainText.Length <= 0)
+                throw new ArgumentNullException("plainText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+            byte[] encrypted;
+            // Create an RijndaelManaged object
+            // with the specified key and IV.
+            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            {
+                rijAlg.Key = Key;
+                rijAlg.IV = IV;
+
+                // Create a decrytor to perform the stream transform.
+                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
+
+                // Create the streams used for encryption.
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+
+                            //Write all data to the stream.
+                            swEncrypt.Write(plainText);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+            }
+
+
+            // Return the encrypted bytes from the memory stream.
+            return encrypted;
+
         }
     }
 }

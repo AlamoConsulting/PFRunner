@@ -19,7 +19,6 @@ namespace Encrypting
                 throw new ArgumentNullException("Key");
             if (IV == null || IV.Length <= 0)
                 throw new ArgumentNullException("IV");
-            byte[] plaintextBytes = System.Text.Encoding.Unicode.GetBytes(plainText); 
             byte[] encrypted;
             // Create an RijndaelManaged object
             // with the specified key and IV.
@@ -40,12 +39,14 @@ namespace Encrypting
                         {
 
                             //Write all data to the stream.
-                            swEncrypt.Write(plaintextBytes);
+                            swEncrypt.Write(plainText);
                         }
                         encrypted = msEncrypt.ToArray();
                     }
                 }
             }
+
+
             // Return the encrypted bytes from the memory stream.
             return encrypted;
 
