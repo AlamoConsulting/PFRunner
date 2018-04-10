@@ -112,25 +112,25 @@ namespace MyApplication2
 
         private void EncryptAES_Click(object sender, EventArgs e)
         {
+
             using (RijndaelManaged myRijndael = new RijndaelManaged())
             {
                 myRijndael.GenerateKey();
                 myRijndael.GenerateIV();
-                keyAES.Text = System.Text.ASCIIEncoding.UTF32.GetString(myRijndael.Key);
-                ivAES.Text = System.Text.ASCIIEncoding.ASCII.GetString(myRijndael.IV);
-                var key = System.Text.ASCIIEncoding.ASCII.GetBytes(keyAES.Text);
-                var iv = System.Text.ASCIIEncoding.ASCII.GetBytes(ivAES.Text);
+                keyAES.Text = System.Text.Encoding.Unicode.GetString(myRijndael.Key);
+                ivAES.Text = System.Text.Encoding.Unicode.GetString(myRijndael.IV);
+              
                 // Encrypt the string to an array of bytes.
                 byte[] encrypted = Encrypting.AES.EncryptStringToBytes(textBoxStart.Text, myRijndael.Key, myRijndael.IV);
-                textBoxEnd.Text = System.Text.Encoding.ASCII.GetString(encrypted);
+                textBoxEnd.Text = System.Text.Encoding.Unicode.GetString(encrypted);
             }
         }
 
         private void DecryptAES_Click(object sender, EventArgs e)
         {
-            var texto = System.Text.Encoding.ASCII.GetBytes(textBoxStart.Text);
-            var key = System.Text.Encoding.ASCII.GetBytes(keyAES.Text);
-            var iv = System.Text.Encoding.ASCII.GetBytes(ivAES.Text);
+            var texto = System.Text.Encoding.Unicode.GetBytes(textBoxStart.Text);
+            var key = System.Text.Encoding.Unicode.GetBytes(keyAES.Text);
+            var iv = System.Text.Encoding.Unicode.GetBytes(ivAES.Text);
             string roundtrip = Encrypting.AES.DecryptStringFromBytes(texto, key, iv);
             textBoxEnd.Text = roundtrip;
         }

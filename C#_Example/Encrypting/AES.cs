@@ -19,7 +19,7 @@ namespace Encrypting
                 throw new ArgumentNullException("Key");
             if (IV == null || IV.Length <= 0)
                 throw new ArgumentNullException("IV");
-            byte[] plaintextBytes = Encoding.ASCII.GetBytes(plainText); 
+            byte[] plaintextBytes = System.Text.Encoding.Unicode.GetBytes(plainText); 
             byte[] encrypted;
             // Create an RijndaelManaged object
             // with the specified key and IV.
